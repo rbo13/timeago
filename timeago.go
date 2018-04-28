@@ -5,22 +5,22 @@ import (
 	"time"
 )
 
-func UnixToAgo(unix int64) string {
+func TimeAgo(ago int64) string {
 
-	ago := (time.Now().Unix() - unix)
+	timeDiff := (time.Now().Unix() - ago)
 	// TODO:: this should be fixed
-	if ago < 60 {
-		return fmt.Sprintf("%ds ago", ago)
-	} else if ago < 3600 {
-		return fmt.Sprintf("%dm ago", int64(ago/60))
-	} else if ago < (86400) {
-		return fmt.Sprintf("%dh ago", int64(ago/3600))
-	} else if ago < (604800) {
-		return fmt.Sprintf("%dd ago", int64(ago/86400))
-	} else if ago < (2628000) {
-		return fmt.Sprintf("%dw ago", int64(ago/604800))
-	} else if ago < (31536000) {
-		return fmt.Sprintf("%dM ago", int64(ago/2628000))
+	if timeDiff < 60 {
+		return fmt.Sprintf("%ds", timeDiff)
+	} else if timeDiff < 3600 {
+		return fmt.Sprintf("%dm", int64(timeDiff/60))
+	} else if timeDiff < (86400) {
+		return fmt.Sprintf("%dh", int64(timeDiff/3600))
+	} else if timeDiff < (604800) {
+		return fmt.Sprintf("%dd", int64(timeDiff/86400))
+	} else if timeDiff < (2628000) {
+		return fmt.Sprintf("%dw", int64(timeDiff/604800))
+	} else if timeDiff < (31536000) {
+		return fmt.Sprintf("%dM", int64(timeDiff/2628000))
 	}
-	return fmt.Sprintf("%dy ago", int64(ago/31536000))
+	return fmt.Sprintf("%dy", int64(timeDiff/31536000))
 }
