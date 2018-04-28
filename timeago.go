@@ -8,6 +8,7 @@ import (
 func UnixToAgo(unix int64) string {
 
 	ago := (time.Now().Unix() - unix)
+	// TODO:: this should be fixed
 	if ago < 60 {
 		return fmt.Sprintf("%ds ago", ago)
 	} else if ago < 3600 {
